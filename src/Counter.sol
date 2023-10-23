@@ -1,14 +1,15 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
+import {ERC2771Context} from "openzeppelin-contracts/contracts/metatx/ERC2771Context.sol";
 
 contract Counter is ERC2771Context {
     uint256 public number;
     address public lastAddr;
-    address public trustedForwarder;
+    address public _trustedForwarder;
 
 
     constructor(address _t)ERC2771Context() {
-        trustedForwarder= _t;
+        _trustedForwarder= _t;
     }
 
     function setNumber(uint256 newNumber) public {

@@ -8,7 +8,7 @@ contract Counter is ERC2771Context {
     address public _trustedForwarder;
 
 
-    constructor(address _t)ERC2771Context() {
+    constructor(address _t)ERC2771Context(_t) {
         _trustedForwarder= _t;
     }
 
@@ -30,3 +30,8 @@ function getNumber() public view returns (address) {
     return lastAddr;
 }
 }
+
+//forge script script/Counter.s.sol:CounterScript --rpc-url $GOERLI_RPC_URL --broadcast --verify  -vvvv 
+
+// 0x022bF60164616429b43B3Dd5D80583EC789856F7 deploy
+//forge script script/Counter.s.sol:CounterScript --rpc-url $GOERLI_RPC_URL --broadcast -vvvv
